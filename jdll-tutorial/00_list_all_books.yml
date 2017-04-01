@@ -1,0 +1,11 @@
+---
+- name: Do CRUD operations on the Book endpoint
+  hosts: localhost
+  tasks:
+    - name: List all books
+      book:
+      register: books
+
+    - name: Display books
+      debug:
+        msg: '{{ books["books"] }}'

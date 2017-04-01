@@ -1,0 +1,12 @@
+---
+- name: Do CRUD operations on the Book endpoint
+  hosts: localhost
+  tasks:
+    - name: List all books
+      book:
+      register: books
+
+    - name: Update specific book
+      book:
+        id: '{{ books["books"][0]["id"] }}'
+        title: 'Updated title'

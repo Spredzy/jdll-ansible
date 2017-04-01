@@ -1,0 +1,14 @@
+---
+- name: Do CRUD operations on the Book endpoint
+  hosts: localhost
+  tasks:
+    - name: List all books
+      book:
+      register: books
+
+    - name: Delete all books
+      book:
+        id: '{{ item.id }}'
+        state: absent
+      with_items:
+        - '{{ books["books"] }}'
