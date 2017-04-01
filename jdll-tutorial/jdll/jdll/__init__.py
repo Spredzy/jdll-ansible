@@ -28,6 +28,11 @@ class API(object):
 
         return self.api.books.get()
 
+    def get_book(self, id):
+        """Get a specific book. """
+
+        return self.api.books(id).get()
+
     def create_book(self, author, summary, title):
         """Create a book resource. """
 
