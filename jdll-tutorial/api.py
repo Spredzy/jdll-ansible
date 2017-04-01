@@ -30,6 +30,17 @@ def jdll_ansible_get_endpoint():
     return jsonify(books_content)
 
 
+@app.route('/books/<book_id>', methods=['GET'])
+def jdll_ansible_get_endpoint_id(book_id):
+    """Display the informations of a single book. """
+
+    book = [book for book in json.loads(open(_FILEPATH).read()) if book['id'] == book_id]
+    if len(book) == 1:
+        return jsonify(book[0])
+    else:
+        abort(404)
+
+
 @app.route('/books', methods=['POST'])
 def jdll_ansible_post_endpoint():
     """Add content to the book. """
