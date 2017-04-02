@@ -107,7 +107,7 @@ def main():
         'changed': True
     }
 
-    If module.params['state'] == 'absent':
+    if module.params['state'] == 'absent':
         if 'id' not in module.params:
             module.fail_json(msg='id parameter is mandatory')
         # Call to the bindingL: DELETE
@@ -139,7 +139,7 @@ def main():
 
         else:
             # Call to the binding : GET
-            books =  {'books': myapi.list_books()
+            books =  {'books': myapi.list_books()}
             result.update(books)
 
     module.exit_json(**result)
